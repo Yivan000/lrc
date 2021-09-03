@@ -14,8 +14,9 @@ void main() {
 
   ///Parse LRC
   var lrc = Lrc.parse(song);
-  //printLyrics(lrc);
-  print(lrc.format());
+  //Prints the formatted string. The output is mostly the same as the string to be parsed.
+  print(lrc.format() + '\n');
+  printLyrics(lrc);
 }
 
 ///Prints the lyrics on their specified timestamp
