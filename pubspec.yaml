@@ -1,7 +1,7 @@
 name: lrc
 description: A Dart package that parses and handles LRC files.
 version: 1.0.0
-
+repository: https://github.com/yivanscreations/lrc
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

@@ -1,5 +1,5 @@
 ///The parsed LRC class. You can instantiate this class directly
-///or parse a string using Lrc.parse().
+///or parse a string using `Lrc.parse()`.
 class Lrc {
   ///the type of LRC
   LrcTypes type;
@@ -31,13 +31,15 @@ class Lrc {
   ///the language of the song, using IETF BCP 47 language tag (optional) [la]
   String? language;
 
-  ///offset of time in milliseconds, can be positive [shifts time up] or negative [shifts time down] (optional) [offset]
+  ///offset of time in milliseconds, can be positive [shifts time up]
+  ///or negative [shifts time down] (optional) [offset]
   int? offset;
 
   ///the list of lyric lines
   List<LrcLine> lyrics;
 
-  ///Handy parameter to get a stream of the lyrics. See `List<LrcLine>.toStream()`.
+  ///Handy parameter to get a stream of the lyrics.
+  ///See `List<LrcLine>.toStream()`.
   Stream<LrcStream> get stream => lyrics.toStream();
 
   Lrc({
@@ -55,7 +57,8 @@ class Lrc {
     this.language,
   });
 
-  ///Format the lrc to a readable string that can then be outputted to an lrc file.
+  ///Format the lrc to a readable string that can then be
+  ///outputted to an LRC file.
   String format() {
     var output = '';
 
@@ -77,7 +80,8 @@ class Lrc {
     return output;
   }
 
-  ///Parses an LRC from a string. Throws a `FormatExeption` if the inputted string is not valid.
+  ///Parses an LRC from a string. Throws a `FormatExeption`
+  ///if the inputted string is not valid.
   static Lrc parse(String parsed) {
     parsed = parsed.trim();
 
@@ -160,7 +164,8 @@ class Lrc {
               ? LrcTypes.extended_enhanced
               : LrcTypes.enhanced;
           args = {};
-          //for each timestamp in the line, regex has capturing groups to make this easier
+          //for each timestamp in the line, regex has capturing
+          //groups to make this easier
           for (var j in RegExp(r'<((\d\d):(\d\d)\.(\d\d))>([^<]+)')
               .allMatches(lyric)) {
             //puts each timestamp+lyrics in the args, no duplicates
@@ -324,7 +329,7 @@ class LrcStream {
 
 ///Handy extensions on lists of LrcLine
 extension LrcLineExtensions on List<LrcLine> {
-  ///creates a stream for each lyric using their durations
+  ///Creates a stream for each lyric using their durations
   Stream<LrcStream> toStream() async* {
     for (var i = 0; i < length; i++) {
       var lineCurrent = this[i];

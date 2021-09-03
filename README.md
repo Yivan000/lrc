@@ -1,20 +1,23 @@
 This package parses and handles LRC strings, along with handy methods for them.
 
 
-# Features
+## Features
 * It can parse LRC strings or create new ones from scratch
 * Simple and intuitive
 * Adds handy extension methods for strings specific to LRCs
 * Ability to stream the lyrics at the set durations
 
-# Usage
-## Importing
+## Usage
+### Installing
+Installation instructions can be found on the "Installing" tab on pub.dev.
+
+### Importing
 As always, import first this package:
 ```dart
 import 'package:lrc/lrc.dart';
 ```
 
-## Parsing
+### Parsing
 This package only accepts strings so that this can be used for Dart JS and for the web. To accept from files, parse and extract the contents of the file yourself and put it into a string.
 
 You can parse strings using the following:
@@ -54,7 +57,7 @@ bool isValid = idk.isValidLrc;
 ```
 Checking will return a `bool`.
 
-## Creating
+### Creating
 If you want to create a LRC from scratch, you can do that by creating a new `Lrc` object with its parameters.
 
 ```dart
@@ -74,7 +77,7 @@ Lrc(
 )
 ```
 
-### Types
+#### Types
 LRC comes with three types, simple, extended, and enhanced. See the Wikipedia article on LRCs for more information on these types. In this package, the types are stored in an enum class called `LrcTypes`.
 
 ```dart
@@ -84,7 +87,7 @@ LrcTypes.enhanced
 LrcTypes.extended_enhanced //some lines are extended while some are enhanced
 ```
 
-### Lyrics
+#### Lyrics
 The lyrics are encoded in a `List<LrcLine>`, which are basically a list of `LrcLine` in which has the following properties:
 
 ```dart
@@ -116,7 +119,7 @@ If the LRC is enhanced, then that line will have these as arguments:
 }
 ```
 
-## Formatting
+### Formatting
 To format the stored `Lrc` into an actual string that can be saved into a file later on:
 
 ```dart
@@ -126,7 +129,7 @@ Lrc parsedLrc = ...; //the Lrc object to format
 String raw = parsedLrc.format();
 ```
 
-### Formatting a single line
+#### Formatting a single line
 To format just a single `LrcLine`:
 ```dart
 LrcLine line = ...; //the LrcLine object to format
@@ -135,19 +138,19 @@ LrcLine line = ...; //the LrcLine object to format
 String raw = line.formattedLine;
 ```
 
-## Streaming
+### Streaming
 You can stream each lyric at their set duration. To do this:
 
 ```dart
-streamLrc(Lrc lrc) async{
-	// subscribe using the `stream` property
-  await for (LrcStream i in lrc.stream){
-	  ...
+streamLrc(Lrc lrc) async {
+  // subscribe using the `stream` property
+  await for (LrcStream i in lrc.stream) {
+    ...
   }
 
-	// subscribe using the handy `toStream()` extension method on List<LrcLine>
-  await for (LrcStream i in lrc.lyrics.toStream()){
-	  ...
+  // subscribe using the handy `toStream()` extension method on List<LrcLine>
+  await for (LrcStream i in lrc.lyrics.toStream()) {
+    ...
   }
 }
 
@@ -171,7 +174,8 @@ LrcStream(
 )
 ```
 
-# License
+## License
+This package is licensed under the 3 clause BSD license.
 ```
 Copyright 2021 Yivan's Creations
 
@@ -183,5 +187,14 @@ Redistribution and use in source and binary forms, with or without modification,
 
 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
