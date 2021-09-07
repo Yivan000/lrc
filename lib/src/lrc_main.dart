@@ -317,10 +317,10 @@ class LrcStream {
       this.duration,
       required this.position,
       required this.length})
-      //position should be less than 0
-      : assert(position < 0),
-        //the length should be less than or equal to the position
-        assert(length <= position),
+      //position should be greater than or equal to 0
+      : assert(position >= 0),
+        //the length should be greater than or equal to the position
+        assert(length >= position),
         //previous is null only if position is 0
         assert((previous == null) ? position == 0 : true),
         //next is null only if position is the last
