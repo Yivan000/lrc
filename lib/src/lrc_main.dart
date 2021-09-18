@@ -1,7 +1,7 @@
 ///The parsed LRC class. You can instantiate this class directly
 ///or parse a string using `Lrc.parse()`.
 class Lrc {
-  ///the type of LRC
+  ///the overall type of LRC for this object
   LrcTypes type;
 
   ///the name of the artist of the song (optional)  [ar]
@@ -146,6 +146,7 @@ class Lrc {
 
       if (RegExp(r'^\[\d\d:\d\d\.\d\d\].*$').hasMatch(i)) {
         var lyric = i.substring(10).trim();
+        var lineType = LrcTypes.simple;
         Map<String, Object>? args;
 
         //checkers for different types of LRCs
@@ -158,12 +159,14 @@ class Lrc {
             'letter': lyric[0], //get the letter of the type of person
             'lyrics': lyric.substring(2) //get the rest of the lyrics
           };
+          lineType = LrcTypes.extended;
         } else if (lyric.contains(RegExp(r'<\d\d:\d\d\.\d\d>'))) {
           //if enhanced
           type = (type == LrcTypes.extended)
               ? LrcTypes.extended_enhanced
               : LrcTypes.enhanced;
           args = {};
+          lineType = LrcTypes.enhanced;
           //for each timestamp in the line, regex has capturing
           //groups to make this easier
           for (var j in RegExp(r'<((\d\d):(\d\d)\.(\d\d))>([^<]+)')
@@ -190,6 +193,7 @@ class Lrc {
               milliseconds: int.parse(i.substring(7, 9)),
             ),
             lyrics: lyric,
+            type: lineType,
             args: args));
       }
     }
@@ -260,9 +264,13 @@ class LrcLine {
   ///the additional arguments for other lrc types
   Map<String, Object>? args;
 
+  ///the type of lrc for this line
+  LrcTypes type;
+
   LrcLine({
     required this.timestamp,
     required this.lyrics,
+    required this.type,
     this.args,
   });
 
