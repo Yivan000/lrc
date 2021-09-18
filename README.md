@@ -93,6 +93,7 @@ The lyrics are encoded in a `List<LrcLine>`, which are basically a list of `LrcL
 LrcLine(
   timestamp: //[Duration] the timestamp wherein this lyric will show (required)
   lyrics: //[String] the actual raw lyrics in this line (required)
+  type: //[LrcTypes] the type of LRC for this specific line only
   args: //[Map<String, Object>] addition arguments if the type is not simple (optional)
 )
 ```
