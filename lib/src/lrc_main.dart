@@ -279,12 +279,13 @@ class LrcLine {
     ///function to add leading zeros
     String f(int x) => x.toString().padLeft(2, '0');
 
-    var minutes = timestamp.inMinutes,
+    final minutes = timestamp.inMinutes,
         seconds = timestamp.inSeconds - (minutes * 60),
-        milliseconds =
-            timestamp.inMilliseconds - ((minutes * 60000) + (seconds * 1000));
+        hundredths = (timestamp.inMilliseconds -
+                ((minutes * 60000) + (seconds * 1000))) ~/
+            10;
 
-    return '[${f(minutes)}:${f(seconds)}:${f(milliseconds)}]$lyrics';
+    return '[${f(minutes)}:${f(seconds)}.${f(hundredths)}]$lyrics';
   }
 
   @override
