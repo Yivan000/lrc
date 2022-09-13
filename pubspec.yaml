@@ -1,7 +1,7 @@
 name: lrc
-description: A Dart package that parses and handles LRC files.
-version: 1.0.0
-repository: https://github.com/yivanscreations/lrc
+description: A Dart-only package that creates, parses, and handles LRC, which is a format that stores song lyrics.
+version: 1.0.1
+repository: https://github.com/Yivan000/lrc
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

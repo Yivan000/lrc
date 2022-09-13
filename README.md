@@ -77,7 +77,7 @@ Lrc(
 ```
 
 #### Types
-LRC comes with three types, simple, extended, and enhanced. See the Wikipedia article on LRCs for more information on these types. In this package, the types are stored in an enum class called `LrcTypes`.
+LRC comes with three types, simple, extended, and enhanced. See the [Wikipedia article](https://en.wikipedia.org/wiki/LRC_(file_format)) on LRCs for more information on these types. In this package, the types are stored in an enum class called `LrcTypes`.
 
 ```dart
 LrcTypes.simple
@@ -87,7 +87,7 @@ LrcTypes.extended_enhanced //some lines are extended while some are enhanced
 ```
 
 #### Lyrics
-The lyrics are encoded in a `List<LrcLine>`, which are basically a list of `LrcLine` in which has the following properties:
+The lyrics are encoded in a `List<LrcLine>`, which is basically a list of `LrcLine`, each has the following properties:
 
 ```dart
 LrcLine(
@@ -98,7 +98,7 @@ LrcLine(
 )
 ```
 
-If the LRC is extended, then that particular line will have these as arguments:
+If the LRC is extended, then that particular line will have these as the `args`:
 
 ```dart
 <String, Object>{
@@ -107,7 +107,7 @@ If the LRC is extended, then that particular line will have these as arguments:
 }
 ```
 
-If the LRC is enhanced, then that line will have these as arguments:
+If the LRC is enhanced, then that line will have these as the `args`:
 
 ```dart
 //The key string is the timestamp in angle brackets as seen in the raw lyrics.
@@ -178,7 +178,7 @@ LrcStream(
 ## License
 This package is licensed under the 3 clause BSD license.
 ```
-Copyright 2021 Yivan's Creations
+Copyright 2021 Yivan000
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

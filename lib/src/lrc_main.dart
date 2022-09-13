@@ -1,47 +1,71 @@
-///The parsed LRC class. You can instantiate this class directly
-///or parse a string using `Lrc.parse()`.
+/// The parsed LRC class. 
+/// 
+/// You can instantiate this class directly
+/// or parse a string using `Lrc.parse()`.
 class Lrc {
-  ///the overall type of LRC for this object
+  /// The overall type of LRC for this object
   LrcTypes type;
 
-  ///the name of the artist of the song (optional)  [ar]
+  /// The name of the artist of the song (optional) 
+  /// 
+  /// This corresponds to the ID tag `[ar:]`.
   String? artist;
 
-  ///the name of the album of the song (optional) [al]
+  /// The name of the album of the song (optional)
+  /// 
+  /// This corresponds to the ID tag `[al:]`.
   String? album;
 
-  ///the title of the song (optional) [ti]
+  /// The title of the song (optional)
+  /// 
+  /// This corresponds to the ID tag `[ti:]`.
   String? title;
 
-  ///the name of the author of the lyrics (optional) [au]
+  /// The name of the author of the lyrics (optional)
+  /// 
+  /// This corresponds to the ID tag `[au:]`.
   String? author;
 
-  ///the name of the creator of the LRC file (optional) [by]
+  /// The name of the creator of the LRC file (optional)
+  /// 
+  /// This corresponds to the ID tag `[by:]`.
   String? creator;
 
-  ///the name of the program that created the LRC file (optional) [re]
+  /// The name of the program that created the LRC file (optional)
+  /// 
+  /// This corresponds to the ID tag `[re:]`.
   String? program;
 
-  ///the version of the program that created the LRC file (optional) [ve]
+  /// The version of the program that created the LRC file (optional)
+  /// 
+  /// This corresponds to the ID tag `[ve:]`.
   String? version;
 
-  ///the length of the song (optional) [length]
+  /// The length of the song (optional)
+  /// 
+  /// This corresponds to the ID tag `[length:]`.
   String? length;
 
-  ///the language of the song, using IETF BCP 47 language tag (optional) [la]
+  /// The language of the song, using an IETF BCP 47 language tag (optional)
+  /// 
+  /// This corresponds to the ID tag `[la:]`.
   String? language;
 
-  ///offset of time in milliseconds, can be positive [shifts time up]
-  ///or negative [shifts time down] (optional) [offset]
+  /// Offset of time in milliseconds, can be positive [shifts time up]
+  /// or negative [shifts time down] (optional)
+  /// 
+  /// This corresponds to the ID tag `[offset:]`.
   int? offset;
 
-  ///the list of lyric lines
+  /// The list of lyric lines
   List<LrcLine> lyrics;
 
-  ///Handy parameter to get a stream of the lyrics.
-  ///See `List<LrcLine>.toStream()`.
+  /// Handy parameter to get a stream of the lyrics.
+  /// See `List<LrcLine>.toStream()`.
   Stream<LrcStream> get stream => lyrics.toStream();
 
+  /// Use this constructor if you want to manually create an LRC from scratch.
+  /// Otherwise, parse an LRC string using [Lrc.parse].
   Lrc({
     this.type = LrcTypes.simple,
     required this.lyrics,
@@ -57,8 +81,8 @@ class Lrc {
     this.language,
   });
 
-  ///Format the lrc to a readable string that can then be
-  ///outputted to an LRC file.
+  /// Format the lrc to a readable string that can then be
+  /// outputted to an LRC file.
   String format() {
     var output = '';
 
@@ -80,8 +104,8 @@ class Lrc {
     return output;
   }
 
-  ///Parses an LRC from a string. Throws a `FormatExeption`
-  ///if the inputted string is not valid.
+  /// Parses an LRC from a string. Throws a `FormatExeption`
+  /// if the inputted string is not valid.
   static Lrc parse(String parsed) {
     parsed = parsed.trim();
 
@@ -89,7 +113,7 @@ class Lrc {
       throw FormatException('The inputted string is not a valid LRC file');
     }
 
-    //split string into lines, code from Linesplitter().convert(data)
+    // split string into lines, code from Linesplitter().convert(data)
     var lines = ((data) {
       var lines = <String>[];
       var end = data.length;
@@ -112,7 +136,7 @@ class Lrc {
       return lines;
     })(parsed);
 
-    //temporary storer variables
+    // temporary storer variables
     String? artist,
         album,
         title,
@@ -131,7 +155,7 @@ class Lrc {
             ? toMatch.substring(tag.length + 2, toMatch.length - 1).trim()
             : null;
 
-    //loop thru each lines
+    // loop thru each lines
     for (var i in lines) {
       artist = artist ?? setIfMatchTag(i, 'ar');
       album = album ?? setIfMatchTag(i, 'al');
@@ -149,71 +173,74 @@ class Lrc {
         var lineType = LrcTypes.simple;
         Map<String, Object>? args;
 
-        //checkers for different types of LRCs
+        // checkers for different types of LRCs
         if (lyric.contains(RegExp(r'^\w:'))) {
           //if extended
           type = (type == LrcTypes.enhanced)
               ? LrcTypes.extended_enhanced
               : LrcTypes.extended;
           args = {
-            'letter': lyric[0], //get the letter of the type of person
-            'lyrics': lyric.substring(2) //get the rest of the lyrics
+            'letter': lyric[0], // get the letter of the type of person
+            'lyrics': lyric.substring(2) // get the rest of the lyrics
           };
           lineType = LrcTypes.extended;
-        } else if (lyric.contains(RegExp(r'<\d\d:\d\d\.\d\d>'))) {
-          //if enhanced
+        } else if ( lyric.contains(RegExp(r'<\d\d:\d\d\.\d\d>'))) {
+          // if enhanced
           type = (type == LrcTypes.extended)
               ? LrcTypes.extended_enhanced
               : LrcTypes.enhanced;
           args = {};
           lineType = LrcTypes.enhanced;
-          //for each timestamp in the line, regex has capturing
-          //groups to make this easier
+          // for each timestamp in the line, regex has capturing
+          // groups to make this easier
           for (var j in RegExp(r'<((\d\d):(\d\d)\.(\d\d))>([^<]+)')
               .allMatches(lyric)) {
-            //puts each timestamp+lyrics in the args, no duplicates
+            // puts each timestamp+lyrics in the args, no duplicates
             args.putIfAbsent(
-                j.group(1)!, //the key is the <mm:ss.xx>
-                () => <String, Object>{
-                      //the value is another map with the duration and lyrics
-                      'duration': Duration(
-                        minutes: int.parse(j.group(2)!),
-                        seconds: int.parse(j.group(3)!),
-                        milliseconds: int.parse(j.group(4)!),
-                      ),
-                      'lyrics': j.group(5)!.trim()
-                    });
+              j.group(1)!, //the key is the <mm:ss.xx>
+              () => <String, Object>{
+                // the value is another map with the duration and lyrics
+                'duration': Duration(
+                  minutes: int.parse(j.group(2)!),
+                  seconds: int.parse(j.group(3)!),
+                  milliseconds: int.parse(j.group(4)!),
+                ),
+                'lyrics': j.group(5)!.trim()
+              },
+            );
           }
         }
 
         lyrics.add(LrcLine(
-            timestamp: Duration(
-              minutes: int.parse(i.substring(1, 3)),
-              seconds: int.parse(i.substring(4, 6)),
-              milliseconds: int.parse(i.substring(7, 9)),
-            ),
-            lyrics: lyric,
-            type: lineType,
-            args: args));
+          timestamp: Duration(
+            minutes: int.parse(i.substring(1, 3)),
+            seconds: int.parse(i.substring(4, 6)),
+            milliseconds: int.parse(i.substring(7, 9)),
+          ),
+          lyrics: lyric,
+          type: lineType,
+          args: args,
+        ));
       }
     }
 
     return Lrc(
-        type: type ?? LrcTypes.simple,
-        artist: artist,
-        album: album,
-        title: title,
-        author: author,
-        length: length,
-        creator: creator,
-        offset: (offset != null) ? int.tryParse(offset) : null,
-        program: program,
-        version: version,
-        lyrics: lyrics,
-        language: language);
+      type: type ?? LrcTypes.simple,
+      artist: artist,
+      album: album,
+      title: title,
+      author: author,
+      length: length,
+      creator: creator,
+      offset: (offset != null) ? int.tryParse(offset) : null,
+      program: program,
+      version: version,
+      lyrics: lyrics,
+      language: language,
+    );
   }
 
-  ///Checks if the string input is a valid LRC using Regex.
+  /// Checks if the string [input] is a valid LRC using Regex.
   static bool isValid(String input) => RegExp(
           r'^([\r\n]*\[((ti)|(a[rlu])|(by)|([rv]e)|(length)|(offset)|(la)):.+\][\r\n]*)*([\r\n]*\[\d\d:\d\d\.\d\d\].*){2,}[\r\n]*$')
       .hasMatch(input.trim());
@@ -298,27 +325,27 @@ class LrcLine {
   }
 }
 
-///A data class to store each yielding of the stream
+/// A data class to store each yielding of the stream
 class LrcStream {
-  ///The previous line. Is null if the current line is the fist position.
+  /// The previous line. Is null if the current line is the fist position.
   LrcLine? previous;
 
-  ///the current line
+  /// Tthe current line
   LrcLine current;
 
-  ///The next line. Is null if the current line is the last position.
+  /// The next line. Is null if the current line is the last position.
   LrcLine? next;
 
-  ///the duration from the current to the next. Is null if the current line is the last position.
+  /// The duration from the current to the next. Is null if the current line is the last position.
   Duration? duration;
 
-  ///the position of the current line
+  /// The position of the current line
   int position;
 
-  ///The total number of lines in the stream
+  /// The total number of lines in the stream
   int length;
 
-  ///The main constructor for a LrcStream
+  /// The main constructor for a LrcStream
   LrcStream(
       {this.previous,
       required this.current,
@@ -336,9 +363,9 @@ class LrcStream {
         assert((next == null) ? position == length : true);
 }
 
-///Handy extensions on lists of LrcLine
+/// Handy extensions on lists of LrcLine
 extension LrcLineExtensions on List<LrcLine> {
-  ///Creates a stream for each lyric using their durations
+  /// Creates a stream for each lyric using their durations
   Stream<LrcStream> toStream() async* {
     for (var i = 0; i < length; i++) {
       var lineCurrent = this[i];
@@ -362,11 +389,11 @@ extension LrcLineExtensions on List<LrcLine> {
   }
 }
 
-///Handy extensions on strings
+/// Handy extensions on strings
 extension StringExtensions on String {
-  ///Handy extension method that parses them to LRCs
+  /// Handy extension method that parses the string to an [Lrc]
   Lrc toLrc() => Lrc.parse(this);
 
-  ///Handy extension getter if the given string is a valid LRC
+  /// Handy extension getter if the given string is a valid LRC
   bool get isValidLrc => Lrc.isValid(this);
 }
