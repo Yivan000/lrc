@@ -1,59 +1,59 @@
-/// The parsed LRC class. 
-/// 
+/// The parsed LRC class.
+///
 /// You can instantiate this class directly
 /// or parse a string using `Lrc.parse()`.
 class Lrc {
   /// The overall type of LRC for this object
   LrcTypes type;
 
-  /// The name of the artist of the song (optional) 
-  /// 
+  /// The name of the artist of the song (optional)
+  ///
   /// This corresponds to the ID tag `[ar:]`.
   String? artist;
 
   /// The name of the album of the song (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[al:]`.
   String? album;
 
   /// The title of the song (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[ti:]`.
   String? title;
 
   /// The name of the author of the lyrics (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[au:]`.
   String? author;
 
   /// The name of the creator of the LRC file (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[by:]`.
   String? creator;
 
   /// The name of the program that created the LRC file (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[re:]`.
   String? program;
 
   /// The version of the program that created the LRC file (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[ve:]`.
   String? version;
 
   /// The length of the song (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[length:]`.
   String? length;
 
   /// The language of the song, using an IETF BCP 47 language tag (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[la:]`.
   String? language;
 
   /// Offset of time in milliseconds, can be positive [shifts time up]
   /// or negative [shifts time down] (optional)
-  /// 
+  ///
   /// This corresponds to the ID tag `[offset:]`.
   int? offset;
 
@@ -184,7 +184,7 @@ class Lrc {
             'lyrics': lyric.substring(2) // get the rest of the lyrics
           };
           lineType = LrcTypes.extended;
-        } else if ( lyric.contains(RegExp(r'<\d\d:\d\d\.\d\d>'))) {
+        } else if (lyric.contains(RegExp(r'<\d\d:\d\d\.\d\d>'))) {
           // if enhanced
           type = (type == LrcTypes.extended)
               ? LrcTypes.extended_enhanced
@@ -203,19 +203,22 @@ class Lrc {
                 'duration': Duration(
                   minutes: int.parse(j.group(2)!),
                   seconds: int.parse(j.group(3)!),
-                  milliseconds: int.parse(j.group(4)!),
+                  milliseconds: int.parse(j.group(4)!) * 10,
                 ),
                 'lyrics': j.group(5)!.trim()
               },
             );
           }
         }
+        final minutes = int.parse(i.substring(1, 3));
+        final seconds = int.parse(i.substring(4, 6));
+        final hundreds = int.parse(i.substring(7, 9));
 
         lyrics.add(LrcLine(
           timestamp: Duration(
-            minutes: int.parse(i.substring(1, 3)),
-            seconds: int.parse(i.substring(4, 6)),
-            milliseconds: int.parse(i.substring(7, 9)),
+            minutes: minutes,
+            seconds: seconds,
+            milliseconds: hundreds * 10,
           ),
           lyrics: lyric,
           type: lineType,
@@ -306,13 +309,12 @@ class LrcLine {
     ///function to add leading zeros
     String f(int x) => x.toString().padLeft(2, '0');
 
-    final minutes = timestamp.inMinutes,
-        seconds = timestamp.inSeconds - (minutes * 60),
-        hundredths = (timestamp.inMilliseconds -
-                ((minutes * 60000) + (seconds * 1000))) ~/
-            10;
+    // LRC format doesn't accept hours.
+    final minutes = timestamp.inMinutes % 60,
+        seconds = timestamp.inSeconds % 60,
+        hundreds = timestamp.inMilliseconds % 1000 ~/ 10;
 
-    return '[${f(minutes)}:${f(seconds)}.${f(hundredths)}]$lyrics';
+    return '[${f(minutes)}:${f(seconds)}.${f(hundreds)}]$lyrics';
   }
 
   @override
