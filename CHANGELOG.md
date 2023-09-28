@@ -6,3 +6,7 @@
 
 - Fixed a bug that causes `Lrc.format` to return an invalid LRC string [[#3](https://github.com/Yivan000/lrc/pull/3)]
 - Added more and fixed some documentation
+
+## 1.0.2
+
+- Fixed a bug where the hundreds of a second time is being saved as thousands of a second [[#4](https://github.com/Yivan000/lrc/pull/4)]
