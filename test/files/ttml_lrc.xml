@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tt xmlns="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" ttp:timeBase="media" xmlns:tts="http://www.w3.org/ns/ttml#styling" xml:lang="en" xmlns:ttm="http://www.w3.org/ns/ttml#metadata">
+  <head>
+    <metadata>
+      <ttm:title></ttm:title>
+    </metadata>
+    <styling>
+      <style xml:id="s0" tts:backgroundColor="black" tts:fontStyle="normal" tts:fontSize="16px" tts:fontFamily="sansSerif" tts:color="white" />
+    </styling>
+    <layout>
+      <region tts:extent="80% 40%" tts:origin="10% 10%" tts:displayAlign="before" tts:textAlign="start" xml:id="topLeft" />
+      <region tts:extent="80% 40%" tts:origin="10% 30%" tts:displayAlign="center" tts:textAlign="start" xml:id="centerLeft" />
+      <region tts:extent="80% 40%" tts:origin="10% 50%" tts:displayAlign="after" tts:textAlign="start" xml:id="bottomLeft" />
+      <region tts:extent="80% 40%" tts:origin="10% 10%" tts:displayAlign="before" tts:textAlign="center" xml:id="topCenter" />
+      <region tts:extent="80% 40%" tts:origin="10% 30%" tts:displayAlign="center" tts:textAlign="center" xml:id="centerСenter" />
+      <region tts:extent="80% 40%" tts:origin="10% 50%" tts:displayAlign="after" tts:textAlign="center" xml:id="bottomCenter" />
+      <region tts:extent="80% 40%" tts:origin="10% 10%" tts:displayAlign="before" tts:textAlign="end" xml:id="topRight" />
+      <region tts:extent="80% 40%" tts:origin="10% 30%" tts:displayAlign="center" tts:textAlign="end" xml:id="centerRight" />
+      <region tts:extent="80% 40%" tts:origin="10% 50%" tts:displayAlign="after" tts:textAlign="end" xml:id="bottomRight" />
+    </layout>
+  </head>
+  <body style="s0">
+  
+    <div>
+      <p begin="18.653s" xml:id="p0" end="23.256s">v1:&lt;00:18.653&gt;They &lt;00:18.900&gt;say &lt;00:19.352&gt;I&#039;m &lt;00:19.588&gt;too &lt;00:20.298&gt;young &lt;00:20.845&gt;to &lt;00:21.184&gt;love &lt;00:21.648&gt;you &lt;00:22.543&gt;</p>
+      <p begin="23.256s" xml:id="p1" end="27.79s">v1:&lt;00:23.256&gt;I &lt;00:23.544&gt;don&#039;t &lt;00:24.092&gt;know &lt;00:24.556&gt;what &lt;00:24.942&gt;I &lt;00:25.603&gt;need &lt;00:27.213&gt;</p>
+      <p begin="27.79s" xml:id="p2" end="31.145s">v1:&lt;00:27.790&gt;They &lt;00:28.013&gt;think &lt;00:28.298&gt;I &lt;00:28.554&gt;don&#039;t &lt;00:28.997&gt;understand &lt;00:31.076&gt;</p>
+      <p begin="31.145s" xml:id="p3" end="36.556s">v1:&lt;00:31.145&gt;The &lt;00:31.392&gt;freedom &lt;00:32.201&gt;land &lt;00:32.960&gt;of &lt;00:33.168&gt;the &lt;00:33.403&gt;sev&lt;00:34.053&gt;en&lt;00:34.686&gt;ties &lt;00:36.506&gt;</p>
+      <p begin="36.556s" xml:id="p4" end="40.738s">v1:&lt;00:36.556&gt;I &lt;00:36.697&gt;think &lt;00:37.076&gt;I&#039;m &lt;00:37.385&gt;too &lt;00:37.950&gt;cool &lt;00:38.563&gt;to &lt;00:38.800&gt;know &lt;00:39.252&gt;ya &lt;00:40.174&gt;</p>
+      <p begin="40.738s" xml:id="p5" end="45.362s">v1:&lt;00:40.738&gt;You &lt;00:40.928&gt;say &lt;00:41.212&gt;I&#039;m &lt;00:41.539&gt;like &lt;00:41.777&gt;the &lt;00:42.122&gt;ice &lt;00:42.746&gt;I &lt;00:43.282&gt;freeze &lt;00:44.918&gt;</p>
+      <p begin="45.362s" xml:id="p6" end="48.293s">v1:&lt;00:45.362&gt;I&#039;m &lt;00:45.496&gt;churning &lt;00:46.192&gt;out &lt;00:46.709&gt;novels &lt;00:47.584&gt;like &lt;00:48.383&gt;</p>
+      <p begin="48.293s" xml:id="p7" end="55.966s">v1:&lt;00:48.293&gt;Beat &lt;00:48.804&gt;poetry &lt;00:50.081&gt;&lt;00:50.422&gt;on &lt;00:50.810&gt;am&lt;00:51.066&gt;phe&lt;00:51.433&gt;ta&lt;00:52.022&gt;mines &lt;00:55.180&gt;</p>
+      <p begin="55.966s" xml:id="p8" end="64.696s">v1:&lt;00:55.966&gt;I &lt;00:56.403&gt;say &lt;01:00.424&gt;</p>
+      <p begin="64.696s" xml:id="p9" end="70.26s">v1:&lt;01:04.696&gt;I &lt;01:05.062&gt;say &lt;01:09.047&gt;</p>
+      <p begin="70.26s" xml:id="p10" end="74.214s">v1:&lt;01:10.260&gt;Well, &lt;01:10.525&gt;my &lt;01:10.870&gt;boyfriend&#039;s &lt;01:12.155&gt;in &lt;01:12.458&gt;a &lt;01:12.732&gt;band &lt;01:13.611&gt;</p>
+      <p begin="74.214s" xml:id="p11" end="79.056s">v1:&lt;01:14.214&gt;He &lt;01:14.474&gt;plays &lt;01:14.930&gt;guitar &lt;01:15.632&gt;while &lt;01:16.049&gt;I &lt;01:16.274&gt;sing &lt;01:16.501&gt;Lou &lt;01:17.003&gt;Reed &lt;01:18.122&gt;</p>
+      <p begin="79.056s" xml:id="p12" end="83.453s">v1:&lt;01:19.056&gt;I&#039;ve &lt;01:19.362&gt;got &lt;01:19.576&gt;feathers &lt;01:20.582&gt;in &lt;01:21.082&gt;my &lt;01:21.433&gt;hair &lt;01:22.449&gt;</p>
+      <p begin="83.453s" xml:id="p13" end="87.804s">v1:&lt;01:23.453&gt;I &lt;01:23.622&gt;get &lt;01:23.932&gt;down &lt;01:24.388&gt;to &lt;01:24.672&gt;beat &lt;01:25.050&gt;poetry &lt;01:26.763&gt;</p>
+      <p begin="87.804s" xml:id="p14" end="92.152s">v1:&lt;01:27.804&gt;And &lt;01:28.128&gt;my &lt;01:28.420&gt;jazz &lt;01:28.878&gt;collection&#039;s &lt;01:30.264&gt;rare &lt;01:31.794&gt;</p>
+      <p begin="92.152s" xml:id="p15" end="96.648s">v1:&lt;01:32.152&gt;I &lt;01:32.320&gt;can &lt;01:32.616&gt;play &lt;01:33.313&gt;most &lt;01:33.968&gt;anything &lt;01:35.705&gt;</p>
+      <p begin="96.648s" xml:id="p16" end="101.029s">v1:&lt;01:36.648&gt;I&#039;m &lt;01:37.054&gt;a &lt;01:37.311&gt;Brooklyn &lt;01:38.229&gt;baby &lt;01:40.161&gt;</p>
+      <p begin="101.029s" xml:id="p17" end="115.7s">v1:&lt;01:41.029&gt;I&#039;m &lt;01:41.353&gt;a &lt;01:41.656&gt;Brooklyn &lt;01:42.757&gt;baby &lt;01:44.788&gt;</p>
+      <p begin="115.7s" xml:id="p18" end="119.977s">v1:&lt;01:55.700&gt;They &lt;01:55.920&gt;say &lt;01:56.275&gt;I&#039;m &lt;01:56.566&gt;too &lt;01:57.197&gt;young &lt;01:57.733&gt;to &lt;01:58.113&gt;love &lt;01:58.548&gt;you &lt;01:59.523&gt;</p>
+      <p begin="119.977s" xml:id="p19" end="124.538s">v1:&lt;01:59.977&gt;They &lt;02:00.256&gt;say &lt;02:00.665&gt;I&#039;m &lt;02:00.839&gt;too &lt;02:01.440&gt;dumb &lt;02:01.926&gt;to &lt;02:02.219&gt;see &lt;02:03.994&gt;</p>
+      <p begin="124.538s" xml:id="p20" end="127.548s">v1:&lt;02:04.538&gt;They &lt;02:04.719&gt;judge &lt;02:05.118&gt;me &lt;02:05.386&gt;like &lt;02:05.683&gt;a &lt;02:05.992&gt;picture &lt;02:06.790&gt;book &lt;02:07.511&gt;</p>
+      <p begin="127.548s" xml:id="p21" end="133.332s">v1:&lt;02:07.548&gt;By &lt;02:07.836&gt;the &lt;02:08.098&gt;colors, &lt;02:08.872&gt;like &lt;02:09.508&gt;they &lt;02:09.716&gt;forgot &lt;02:10.722&gt;to &lt;02:11.049&gt;read &lt;02:12.902&gt;</p>
+      <p begin="133.332s" xml:id="p22" end="137.652s">v1:&lt;02:13.332&gt;I &lt;02:13.567&gt;think &lt;02:13.858&gt;we&#039;re &lt;02:14.120&gt;like &lt;02:14.709&gt;fire &lt;02:15.600&gt;and &lt;02:15.863&gt;water &lt;02:17.032&gt;</p>
+      <p begin="137.652s" xml:id="p23" end="142.07s">v1:&lt;02:17.652&gt;I &lt;02:17.839&gt;think &lt;02:18.125&gt;we&#039;re &lt;02:18.387&gt;like &lt;02:18.678&gt;the &lt;02:18.999&gt;wind &lt;02:19.588&gt;and &lt;02:19.933&gt;sea &lt;02:21.715&gt;</p>
+      <p begin="142.07s" xml:id="p24" end="145.227s">v1:&lt;02:22.070&gt;You&#039;re &lt;02:22.323&gt;burning &lt;02:22.876&gt;up, &lt;02:23.132&gt;I&#039;m &lt;02:23.429&gt;cooling &lt;02:24.280&gt;down &lt;02:25.134&gt;</p>
+      <p begin="145.227s" xml:id="p25" end="147.357s">v1:&lt;02:25.227&gt;You&#039;re &lt;02:25.390&gt;up, &lt;02:25.694&gt;I&#039;m &lt;02:26.216&gt;down &lt;02:26.969&gt;</p>
+      <p begin="147.357s" xml:id="p26" end="152.63s">v1:&lt;02:27.357&gt;You&#039;re &lt;02:27.550&gt;blind, &lt;02:28.145&gt;I &lt;02:28.603&gt;see &lt;02:31.641&gt;</p>
+      <p begin="152.63s" xml:id="p27" end="161.383s">v1:&lt;02:32.630&gt;But &lt;02:32.770&gt;I&#039;m &lt;02:33.138&gt;free &lt;02:36.187&gt;</p>
+      <p begin="161.383s" xml:id="p28" end="166.816s">v1:&lt;02:41.383&gt;I&#039;m &lt;02:41.796&gt;free &lt;02:45.916&gt;</p>
+      <p begin="166.816s" xml:id="p29" end="170.738s">v1:&lt;02:46.816&gt;Well, &lt;02:47.027&gt;my &lt;02:47.341&gt;boyfriend&#039;s &lt;02:48.627&gt;in &lt;02:48.883&gt;a &lt;02:49.199&gt;band &lt;02:50.102&gt;</p>
+      <p begin="170.738s" xml:id="p30" end="175.513s">v1:&lt;02:50.738&gt;He &lt;02:51.042&gt;plays &lt;02:51.385&gt;guitar &lt;02:52.188&gt;while &lt;02:52.611&gt;I &lt;02:52.711&gt;sing &lt;02:53.152&gt;Lou &lt;02:53.545&gt;Reed &lt;02:54.574&gt;</p>
+      <p begin="175.513s" xml:id="p31" end="179.9s">v1:&lt;02:55.513&gt;I&#039;ve &lt;02:55.825&gt;got &lt;02:56.039&gt;feathers &lt;02:57.223&gt;in &lt;02:57.533&gt;my &lt;02:57.925&gt;hair &lt;02:58.909&gt;</p>
+      <p begin="179.9s" xml:id="p32" end="184.349s">v1:&lt;02:59.900&gt;I &lt;03:00.081&gt;get &lt;03:00.397&gt;down &lt;03:01.003&gt;to &lt;03:01.265&gt;beat &lt;03:01.515&gt;poetry &lt;03:02.977&gt;</p>
+      <p begin="184.349s" xml:id="p33" end="188.664s">v1:&lt;03:04.349&gt;And &lt;03:04.590&gt;my &lt;03:04.899&gt;jazz &lt;03:05.345&gt;collection&#039;s &lt;03:06.732&gt;rare &lt;03:07.933&gt;</p>
+      <p begin="188.664s" xml:id="p34" end="193.138s">v1:&lt;03:08.664&gt;I &lt;03:08.887&gt;can &lt;03:09.083&gt;play &lt;03:09.773&gt;most &lt;03:10.356&gt;anything &lt;03:12.185&gt;</p>
+      <p begin="193.138s" xml:id="p35" end="197.553s">v1:&lt;03:13.138&gt;I&#039;m &lt;03:13.409&gt;a &lt;03:13.792&gt;Brooklyn &lt;03:14.615&gt;baby &lt;03:17.026&gt;</p>
+      <p begin="197.553s" xml:id="p36" end="203.468s">v1:&lt;03:17.553&gt;I&#039;m &lt;03:17.818&gt;a &lt;03:18.127&gt;Brooklyn &lt;03:19.222&gt;baby &lt;03:21.316&gt;</p>
+      <p begin="203.468s" xml:id="p37" end="207.978s">v1:&lt;03:23.468&gt;I&#039;m &lt;03:23.568&gt;talking &lt;03:24.143&gt;about &lt;03:24.411&gt;my &lt;03:24.702&gt;generation &lt;03:27.222&gt;</p>
+      <p begin="207.978s" xml:id="p38" end="212.111s">v1:&lt;03:27.978&gt;Talking &lt;03:28.386&gt;about &lt;03:28.753&gt;that &lt;03:29.143&gt;newer &lt;03:29.969&gt;nation &lt;03:31.491&gt;</p>
+      <p begin="212.111s" xml:id="p39" end="214.708s">v1:&lt;03:32.111&gt;And &lt;03:32.399&gt;if &lt;03:32.709&gt;you &lt;03:32.982&gt;don&#039;t &lt;03:33.559&gt;like &lt;03:34.154&gt;it &lt;03:34.698&gt;</p>
+      <p begin="214.708s" xml:id="p40" end="217.884s">v1:&lt;03:34.708&gt;You &lt;03:35.074&gt;can &lt;03:35.675&gt;beat &lt;03:36.793&gt;it &lt;03:37.621&gt;</p>
+      <p begin="217.884s" xml:id="p41" end="220.844s">v1:&lt;03:37.884&gt;Beat &lt;03:38.137&gt;it, &lt;03:38.619&gt;baby &lt;03:40.228&gt;</p>
+      <p begin="220.844s" xml:id="p42" end="224.905s">v1:&lt;03:40.844&gt;You &lt;03:41.097&gt;never &lt;03:41.579&gt;liked &lt;03:41.858&gt;the &lt;03:42.168&gt;way &lt;03:42.566&gt;I &lt;03:42.870&gt;said &lt;03:43.494&gt;it &lt;03:44.535&gt;</p>
+      <p begin="224.905s" xml:id="p43" end="229.502s">v1:&lt;03:44.905&gt;If &lt;03:45.128&gt;you &lt;03:45.433&gt;don&#039;t &lt;03:45.638&gt;get &lt;03:45.814&gt;it, &lt;03:46.309&gt;then &lt;03:46.808&gt;forget &lt;03:48.051&gt;it &lt;03:48.770&gt;</p>
+      <p begin="229.502s" xml:id="p44" end="236.761s">v1:&lt;03:49.502&gt;&#039;Cause &lt;03:49.897&gt;I &lt;03:49.997&gt;don&#039;t &lt;03:50.195&gt;have &lt;03:50.469&gt;to &lt;03:50.599&gt;fucking &lt;03:51.676&gt;explain &lt;03:53.937&gt;it &lt;03:55.377&gt;</p>
+      <p begin="236.761s" xml:id="p45" end="240.941s">v1:&lt;03:56.761&gt;And &lt;03:57.014&gt;my &lt;03:57.347&gt;boyfriend&#039;s &lt;03:58.561&gt;in &lt;03:59.078&gt;a &lt;03:59.334&gt;band &lt;04:00.206&gt;</p>
+      <p begin="240.941s" xml:id="p46" end="245.52s">v1:&lt;04:00.941&gt;He &lt;04:01.185&gt;plays &lt;04:01.444&gt;guitar &lt;04:02.187&gt;while &lt;04:02.598&gt;I &lt;04:02.698&gt;sing &lt;04:03.145&gt;Lou &lt;04:03.603&gt;Reed &lt;04:04.680&gt;</p>
+      <p begin="245.52s" xml:id="p47" end="250.047s">v1:&lt;04:05.520&gt;I&#039;ve &lt;04:05.856&gt;got &lt;04:06.082&gt;feathers &lt;04:07.314&gt;in &lt;04:07.661&gt;my &lt;04:07.928&gt;hair &lt;04:08.975&gt;</p>
+      <p begin="250.047s" xml:id="p48" end="254.53s">v1:&lt;04:10.047&gt;I &lt;04:10.151&gt;get &lt;04:10.454&gt;high &lt;04:10.788&gt;on &lt;04:11.031&gt;hydroponic &lt;04:12.477&gt;weed &lt;04:13.575&gt;</p>
+      <p begin="254.53s" xml:id="p49" end="258.992s">v1:&lt;04:14.530&gt;And &lt;04:14.759&gt;my &lt;04:15.128&gt;jazz &lt;04:15.717&gt;collection&#039;s &lt;04:17.144&gt;rare &lt;04:18.492&gt;</p>
+      <p begin="258.992s" xml:id="p50" end="263.393s">v1:&lt;04:18.992&gt;I &lt;04:19.202&gt;get &lt;04:19.483&gt;down &lt;04:20.005&gt;to &lt;04:20.286&gt;beat &lt;04:20.582&gt;poetry &lt;04:22.868&gt;</p>
+      <p begin="263.393s" xml:id="p51" end="267.736s">v1:&lt;04:23.393&gt;I&#039;m &lt;04:23.664&gt;a &lt;04:23.991&gt;Brooklyn &lt;04:25.097&gt;baby &lt;04:26.788&gt;</p>
+      <p begin="267.736s" xml:id="p52" end="290.175s">v1:&lt;04:27.736&gt;I&#039;m &lt;04:28.036&gt;a &lt;04:28.363&gt;Brooklyn &lt;04:29.440&gt;baby &lt;04:31.619&gt;</p>
+      <p begin="290.175s" xml:id="p53" end="294.491s">v1:&lt;04:50.175&gt;Yeah, &lt;04:50.275&gt;my &lt;04:50.493&gt;boyfriend&#039;s &lt;04:51.766&gt;pretty &lt;04:52.569&gt;cool &lt;04:53.980&gt;</p>
+      <p begin="294.491s" xml:id="p54" end="298.599s">v1:&lt;04:54.491&gt;But &lt;04:54.821&gt;he&#039;s &lt;04:55.172&gt;not &lt;04:55.630&gt;as &lt;04:56.219&gt;cool &lt;04:56.814&gt;as &lt;04:57.219&gt;me &lt;04:58.437&gt;</p>
+      <p begin="298.599s" xml:id="p55" end="303.417s">v1:&lt;04:58.599&gt;&#039;Cause &lt;04:58.911&gt;I&#039;m &lt;04:59.197&gt;a &lt;04:59.641&gt;Brooklyn &lt;05:00.595&gt;baby &lt;05:02.807&gt;</p>
+      <p begin="303.417s" xml:id="p56" end="304.417s">v1:&lt;05:03.417&gt;I&#039;m &lt;05:03.765&gt;a &lt;05:04.080&gt;Brooklyn &lt;05:05.514&gt;baby &lt;05:07.710&gt;</p>
+    </div>
+  </body>
+</tt>

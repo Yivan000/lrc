@@ -1,0 +1,183 @@
+<?xml version="1.0" ?>
+<tt xmlns="http://www.w3.org/ns/ttml" xmlns:itunes="http://music.apple.com/lyric-ttml-internal" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" itunes:timing="Line" xml:lang="en">
+	<head>
+		<metadata>
+			<ttm:agent type="person" xml:id="v1"/>
+			<ttm:agent type="person" xml:id="v2"/>
+			<ttm:agent type="other" xml:id="v3"/>
+			<iTunesMetadata xmlns="http://music.apple.com/lyric-ttml-internal" leadingSilence="0">
+				<translations/>
+				<songwriters>
+					<songwriter>Ali Shaheed Jones-Muhammad</songwriter>
+					<songwriter>Aubrey Drake Graham</songwriter>
+					<songwriter>Bryan Higgins</songwriter>
+					<songwriter>Brytavious Chambers</songwriter>
+					<songwriter>Chauncey Hollis</songwriter>
+					<songwriter>Christopher Martin</songwriter>
+					<songwriter>Christopher Wallace</songwriter>
+					<songwriter>Chylow Parker</songwriter>
+					<songwriter>Cydel Young</songwriter>
+					<songwriter>Fred Scruggs</songwriter>
+					<songwriter>Harry Wayne Casey</songwriter>
+					<songwriter>Jacques Bermon Webster II</songwriter>
+					<songwriter>James Jackson</songwriter>
+					<songwriter>John Edward Hawkins</songwriter>
+					<songwriter>Kamaal Fareed</songwriter>
+					<songwriter>Keith Elam</songwriter>
+					<songwriter>Kevin Gomringer</songwriter>
+					<songwriter>Khalif Brown</songwriter>
+					<songwriter>Kirk Jones</songwriter>
+					<songwriter>Luther Campbell</songwriter>
+					<songwriter>MIKE DEAN</songwriter>
+					<songwriter>Malik Izaak Taylor</songwriter>
+					<songwriter>Mirsad Dérvic</songwriter>
+					<songwriter>Osten Harvey</songwriter>
+					<songwriter>Ozan Yildirim</songwriter>
+					<songwriter>Richard Finch</songwriter>
+					<songwriter>Rogét Chahayed</songwriter>
+					<songwriter>Tim Gomringer</songwriter>
+					<songwriter>Trevor Smith</songwriter>
+					<songwriter>Tyrone Taylor</songwriter>
+				</songwriters>
+			</iTunesMetadata>
+		</metadata>
+	</head>
+	<body dur="5:12.820">
+		<div begin="20.027" end="24.176" itunes:songPart="Intro">
+			<p begin="20.027" end="20.837" itunes:key="L1" ttm:agent="v1">Astro</p>
+			<p begin="23.720" end="24.176" itunes:key="L2" ttm:agent="v1">Yeah</p>
+		</div>
+		<div begin="27.481" end="59.010" itunes:songPart="Verse">
+			<p begin="27.481" end="29.893" itunes:key="L3" ttm:agent="v1">Sun is down, freezing cold</p>
+			<p begin="30.252" end="33.237" itunes:key="L4" ttm:agent="v1">That's how we already know winter's here</p>
+			<p begin="33.493" end="36.237" itunes:key="L5" ttm:agent="v1">My dog'll probably do it for a Louis belt</p>
+			<p begin="37.115" end="39.814" itunes:key="L6" ttm:agent="v1">That's just all he know, he don't know nothing else</p>
+			<p begin="40.351" end="41.716" itunes:key="L7" ttm:agent="v1">I tried to show 'em</p>
+			<p begin="44.449" end="44.899" itunes:key="L8" ttm:agent="v1">Yeah</p>
+			<p begin="47.256" end="48.621" itunes:key="L9" ttm:agent="v1">I tried to show 'em</p>
+			<p begin="51.262" end="51.670" itunes:key="L10" ttm:agent="v1">Yeah</p>
+			<p begin="52.981" end="53.522" itunes:key="L11" ttm:agent="v1">Yeah</p>
+			<p begin="53.877" end="55.246" itunes:key="L12" ttm:agent="v1">Yeah, yeah, yeah</p>
+			<p begin="55.678" end="57.230" itunes:key="L13" ttm:agent="v1">Gone on you with the pick and roll</p>
+			<p begin="57.359" end="59.010" itunes:key="L14" ttm:agent="v1">Young La Flame, he in sicko mode!</p>
+		</div>
+		<div begin="1:04.166" end="1:38.048" itunes:songPart="Verse" ttm:agent="v2">
+			<p begin="1:04.166" end="1:06.890" itunes:key="L15" ttm:agent="v2">Made this here with all the ice on in the booth</p>
+			<p begin="1:06.911" end="1:09.931" itunes:key="L16" ttm:agent="v2">At the gate outside, when they pull up, they get me loose</p>
+			<p begin="1:09.971" end="1:13.107" itunes:key="L17" ttm:agent="v2">Yeah, Jump Out boys, that's Nike boys hopping out coupes</p>
+			<p begin="1:13.117" end="1:17.067" itunes:key="L18" ttm:agent="v2">This shit way too big, when we pull up, give me the loot (Gimme the loot!)</p>
+			<p begin="1:17.157" end="1:19.338" itunes:key="L19" ttm:agent="v2">Was off the Remy, had a papoose</p>
+			<p begin="1:20.086" end="1:22.495" itunes:key="L20" ttm:agent="v2">Had to hit my old town to duck the news</p>
+			<p begin="1:23.139" end="1:25.402" itunes:key="L21" ttm:agent="v2">Two-four hour lockdown, we made no moves</p>
+			<p begin="1:25.402" end="1:28.652" itunes:key="L22" ttm:agent="v2">Now it's 4:00 AM and I'm back up popping with the crew</p>
+			<p begin="1:28.652" end="1:31.685" itunes:key="L23" ttm:agent="v2">I just landed in, Chase B mix this pop like Jamba Juice</p>
+			<p begin="1:31.695" end="1:34.841" itunes:key="L24" ttm:agent="v2">Different colored chains, think my jeweler really selling fruits</p>
+			<p begin="1:34.851" end="1:38.048" itunes:key="L25" ttm:agent="v2">And they choking, man, know the crackers wish it was a noose</p>
+		</div>
+		<div begin="1:36.512" end="1:52.539" itunes:songPart="Bridge" ttm:agent="v3">
+			<p begin="1:36.512" end="1:39.277" itunes:key="L26" ttm:agent="v3">Some-, some-, some-, someone said</p>
+			<p begin="1:40.374" end="1:43.181" itunes:key="L27" ttm:agent="v3">To win the retreat, we all in too deep</p>
+			<p begin="1:43.241" end="1:46.889" itunes:key="L28" ttm:agent="v3">Pl-pl-playing for keeps, don't play us for weak (Someone said)</p>
+			<p begin="1:46.713" end="1:49.364" itunes:key="L29" ttm:agent="v3">To win the retreat, we all in too deep</p>
+			<p begin="1:49.445" end="1:52.539" itunes:key="L30" ttm:agent="v3">Pl-pl-playing for keeps, don't play us for weak</p>
+		</div>
+		<div begin="1:53.332" end="2:33.816" itunes:songPart="Verse" ttm:agent="v2">
+			<p begin="1:53.332" end="1:56.509" itunes:key="L31" ttm:agent="v2">This shit way too formal, y'all know I don't follow suit</p>
+			<p begin="1:56.731" end="1:59.662" itunes:key="L32" ttm:agent="v2">Stacey Dash, most of these girls ain't got a clue</p>
+			<p begin="1:59.872" end="2:02.547" itunes:key="L33" ttm:agent="v2">All of these hoes I made off records I produced</p>
+			<p begin="2:02.627" end="2:05.872" itunes:key="L34" ttm:agent="v2">I might take all my exes and put 'em all in a group</p>
+			<p begin="2:06.846" end="2:09.095" itunes:key="L35" ttm:agent="v2">Hit my esés, I need the booch</p>
+			<p begin="2:09.570" end="2:11.933" itunes:key="L36" ttm:agent="v2">'Bout to turn this function to Bonnaroo</p>
+			<p begin="2:13.099" end="2:14.994" itunes:key="L37" ttm:agent="v2">Told her, "Hop in, you coming too"</p>
+			<p begin="2:15.054" end="2:19.444" itunes:key="L38" ttm:agent="v2">In the 305, bitches treat me like I'm Uncle Luke (Don't stop! Pop that pussy!)</p>
+			<p begin="2:18.904" end="2:21.453" itunes:key="L39" ttm:agent="v2">Had to slop the top off, it's just a roof</p>
+			<p begin="2:21.857" end="2:23.385" itunes:key="L40" ttm:agent="v2">She said, "Where we going?"</p>
+			<p begin="2:23.395" end="2:24.443" itunes:key="L41" ttm:agent="v2">I said, "The moon"</p>
+			<p begin="2:25.477" end="2:27.506" itunes:key="L42" ttm:agent="v2">We ain't even make it to the room</p>
+			<p begin="2:27.912" end="2:30.623" itunes:key="L43" ttm:agent="v2">She thought it was the ocean, it's just the pool</p>
+			<p begin="2:31.227" end="2:33.816" itunes:key="L44" ttm:agent="v2">Now I got her open, it's just the Goose</p>
+		</div>
+		<div begin="2:34.536" end="2:48.348" itunes:songPart="Bridge" ttm:agent="v3">
+			<p begin="2:34.536" end="2:37.806" itunes:key="L45" ttm:agent="v2">Who put this shit together? I'm the glue (Someone said)</p>
+			<p begin="2:37.816" end="2:40.967" itunes:key="L46" ttm:agent="v2">Shorty FaceTimed me out the blue (Someone said)</p>
+			<p begin="2:40.549" end="2:42.037" itunes:key="L47" ttm:agent="v3">Pl-playing for keeps</p>
+			<p begin="2:43.198" end="2:45.597" itunes:key="L48" ttm:agent="v3">Someone said, motherf–, someone said</p>
+			<p begin="2:46.718" end="2:48.348" itunes:key="L49" ttm:agent="v3">Don't play us for weak</p>
+		</div>
+		<div begin="3:00.682" end="3:08.929" itunes:songPart="Bridge">
+			<p begin="3:00.682" end="3:01.429" itunes:key="L50" ttm:agent="v2">Yeah!</p>
+			<p begin="3:02.311" end="3:02.887" itunes:key="L51" ttm:agent="v1">Astro</p>
+			<p begin="3:04.562" end="3:05.825" itunes:key="L52" ttm:agent="v1">Yeah, yeah</p>
+			<p begin="3:07.319" end="3:08.929" itunes:key="L53" ttm:agent="v1">(Tay Keith, fuck these **** up!) Aye, aye</p>
+		</div>
+		<div begin="3:09.918" end="3:25.803" itunes:songPart="Chorus">
+			<p begin="3:09.918" end="3:11.536" itunes:key="L54" ttm:agent="v1">She's in love with who I am</p>
+			<p begin="3:11.915" end="3:15.111" itunes:key="L55" ttm:agent="v1">Back in high school, I used to bus it to the dance (Yeah!)</p>
+			<p begin="3:15.096" end="3:17.892" itunes:key="L56" ttm:agent="v1">Now I hit the FBO with duffels in my hands</p>
+			<p begin="3:18.175" end="3:20.880" itunes:key="L57" ttm:agent="v1">I did half a Xan', thirteen hours till I land</p>
+			<p begin="3:20.890" end="3:23.216" itunes:key="L58" ttm:agent="v1">Had me out like a light, aye, yeah</p>
+			<p begin="3:23.226" end="3:24.758" itunes:key="L59" ttm:agent="v1">Like a light, aye, yeah</p>
+			<p begin="3:24.768" end="3:25.803" itunes:key="L60" ttm:agent="v1">Like a light, aye</p>
+		</div>
+		<div begin="3:25.813" end="4:10.792" itunes:songPart="Verse">
+			<p begin="3:25.813" end="3:27.468" itunes:key="L61" ttm:agent="v1">Slept through the flight, aye</p>
+			<p begin="3:27.478" end="3:28.951" itunes:key="L62" ttm:agent="v1">Knocked for the night, aye</p>
+			<p begin="3:28.961" end="3:31.949" itunes:key="L63" ttm:agent="v1">767, man, this shit got double bedroom, man</p>
+			<p begin="3:31.959" end="3:33.466" itunes:key="L64" ttm:agent="v1">I still got scores to settle, man</p>
+			<p begin="3:33.508" end="3:35.455" itunes:key="L65" ttm:agent="v1">I crept down the block (Down the block)</p>
+			<p begin="3:35.639" end="3:37.071" itunes:key="L66" ttm:agent="v1">Made a right (Yeah, right)</p>
+			<p begin="3:37.188" end="3:38.639" itunes:key="L67" ttm:agent="v1">Cut the lights (Yeah, what)</p>
+			<p begin="3:38.721" end="3:39.705" itunes:key="L68" ttm:agent="v1">Paid the price, yeah</p>
+			<p begin="3:39.804" end="3:40.871" itunes:key="L69" ttm:agent="v1">**** think it's sweet</p>
+			<p begin="3:41.787" end="3:42.804" itunes:key="L70" ttm:agent="v1">It's on sight, yeah</p>
+			<p begin="3:43.272" end="3:44.388" itunes:key="L71" ttm:agent="v1">Nothing nice, yeah</p>
+			<p begin="3:44.488" end="3:45.553" itunes:key="L72" ttm:agent="v1">Baguettes in my ice</p>
+			<p begin="3:46.337" end="3:47.487" itunes:key="L73" ttm:agent="v1">Jesus Christ, yeah</p>
+			<p begin="3:47.520" end="3:49.039" itunes:key="L74" ttm:agent="v1">Checks over stripes, yeah</p>
+			<p begin="3:49.172" end="3:50.629" itunes:key="L75" ttm:agent="v1">That's what I like (Yeah!)</p>
+			<p begin="3:50.633" end="3:52.335" itunes:key="L76" ttm:agent="v1">That's what we like (Yeah!)</p>
+			<p begin="3:52.224" end="3:54.921" itunes:key="L77" ttm:agent="v1">Lost my respect, you not a threat</p>
+			<p begin="3:55.275" end="3:58.509" itunes:key="L78" ttm:agent="v1">When I shoot my shot, that shit wetty like I'm Sheck (Bitch!)</p>
+			<p begin="3:57.957" end="3:59.925" itunes:key="L79" ttm:agent="v1">See the shots that I took, aye</p>
+			<p begin="4:00.008" end="4:01.277" itunes:key="L80" ttm:agent="v1">Wet like I'm Book, aye</p>
+			<p begin="4:01.512" end="4:02.810" itunes:key="L81" ttm:agent="v1">Wet like I'm Lizzie</p>
+			<p begin="4:03.059" end="4:05.859" itunes:key="L82" ttm:agent="v1">I be spinning Valley, circle blocks till I'm dizzy</p>
+			<p begin="4:06.525" end="4:07.321" itunes:key="L83" ttm:agent="v1">Like where is he?</p>
+			<p begin="4:08.108" end="4:08.925" itunes:key="L84" ttm:agent="v1">No one seen him</p>
+			<p begin="4:09.408" end="4:10.792" itunes:key="L85" ttm:agent="v1">I'm tryna clean 'em, yeah</p>
+		</div>
+		<div begin="4:11.863" end="4:28.929" itunes:songPart="Chorus">
+			<p begin="4:11.863" end="4:13.421" itunes:key="L86" ttm:agent="v1">She's in love with who I am</p>
+			<p begin="4:13.864" end="4:16.706" itunes:key="L87" ttm:agent="v1">Back in high school, I used to bus it to the dance</p>
+			<p begin="4:17.016" end="4:20.653" itunes:key="L88" ttm:agent="v1">Now I hit the FBO with duffels in my hands (Woo!)</p>
+			<p begin="4:20.089" end="4:22.795" itunes:key="L89" ttm:agent="v1">I did half a Xan', thirteen hours till I land</p>
+			<p begin="4:22.795" end="4:25.082" itunes:key="L90" ttm:agent="v1">Had me out like a light (Like a light)</p>
+			<p begin="4:25.082" end="4:26.592" itunes:key="L91" ttm:agent="v1">Like a light (Like a light)</p>
+			<p begin="4:26.697" end="4:28.150" itunes:key="L92" ttm:agent="v1">Like a light (Like a light)</p>
+			<p begin="4:28.201" end="4:28.929" itunes:key="L93" ttm:agent="v1">Like a light</p>
+		</div>
+		<div begin="4:29.010" end="5:01.833" itunes:songPart="Verse" ttm:agent="v2">
+			<p begin="4:29.010" end="4:30.460" itunes:key="L94" ttm:agent="v2">Yeah, passed the dogs a celly</p>
+			<p begin="4:30.528" end="4:32.103" itunes:key="L95" ttm:agent="v2">Sending texts, ain't sending kites</p>
+			<p begin="4:32.113" end="4:33.514" itunes:key="L96" ttm:agent="v2">Yeah, he said "Keep that on lock"</p>
+			<p begin="4:33.514" end="4:35.601" itunes:key="L97" ttm:agent="v2">I say, "You know this shit, it's stife", yeah</p>
+			<p begin="4:35.784" end="4:37.149" itunes:key="L98" ttm:agent="v2">It's absolute, yeah</p>
+			<p begin="4:37.480" end="4:39.034" itunes:key="L99" ttm:agent="v2">I'm back, reboot, it's lit!</p>
+			<p begin="4:39.034" end="4:41.768" itunes:key="L100" ttm:agent="v2">LaFerrari to Jamba Juice, yeah</p>
+			<p begin="4:41.768" end="4:42.720" itunes:key="L101" ttm:agent="v2">We back on the road</p>
+			<p begin="4:42.730" end="4:44.777" itunes:key="L102" ttm:agent="v2">They jumping off, no parachute, yeah</p>
+			<p begin="4:44.787" end="4:45.845" itunes:key="L103" ttm:agent="v2">Shorty in the back</p>
+			<p begin="4:45.855" end="4:47.997" itunes:key="L104" ttm:agent="v2">She said she working on her glutes, yeah</p>
+			<p begin="4:48.216" end="4:49.594" itunes:key="L105" ttm:agent="v2">Ain't by the book, yeah</p>
+			<p begin="4:49.714" end="4:51.016" itunes:key="L106" ttm:agent="v2">This how it look, yeah</p>
+			<p begin="4:51.442" end="4:52.693" itunes:key="L107" ttm:agent="v2">'Bout a check, yeah</p>
+			<p begin="4:52.793" end="4:54.087" itunes:key="L108" ttm:agent="v2">Just check the foots, yeah</p>
+			<p begin="4:54.166" end="4:55.350" itunes:key="L109" ttm:agent="v2">Pass this to my daughter</p>
+			<p begin="4:55.360" end="4:56.822" itunes:key="L110" ttm:agent="v2">I'ma show her what it took</p>
+			<p begin="4:56.832" end="4:58.345" itunes:key="L111" ttm:agent="v2">Baby mama cover Forbes</p>
+			<p begin="4:58.449" end="5:01.833" itunes:key="L112" ttm:agent="v2">Got these other bitches shook, yeah</p>
+		</div>
+	</body>
+</tt>
+
+

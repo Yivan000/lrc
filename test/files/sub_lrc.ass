@@ -1,0 +1,15 @@
+[Script Info]
+Title: Never Gonna Give You Up
+Original Script: Rick Astley
+ScriptType: v4.00+
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize
+Style: Default,Arial,20
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.00,0:00:04.00,Default,Rick,0,0,0,,{\i1}Never gonna give you up{\i0}
+Dialogue: 0,0:00:04.50,0:00:08.00,Default,Rick,0,0,0,,{\k50}Never {\k50}gonna {\k50}let {\k50}you {\k150}down
+Dialogue: 0,0:00:09.00,0:00:12.00,Default,Carol,0,0,0,,Never gonna run around,\Nand desert you
+Comment: 0,0:00:13.00,0:00:14.00,Default,,0,0,0,,this is a comment

@@ -1,0 +1,14 @@
+WEBVTT
+
+NOTE This is a note
+spanning two lines
+
+00:01.000 --> 00:04.000 align:start
+<v Rick>Never gonna give you up
+
+karaoke-cue
+00:04.500 --> 00:08.000
+<00:04.500>Never <00:05.000>gonna <00:05.500>let <00:06.000>you <00:06.500>down
+
+00:09.000 --> 00:12.000
+Never gonna <i>run</i> around &amp; desert you

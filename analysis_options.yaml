@@ -2,6 +2,9 @@
 # details and rationale, see
 # https://github.com/dart-lang/pedantic#enabled-lints.
 
+analyzer:
+  errors:
+    unnecessary_this: ignore
 include: package:pedantic/analysis_options.yaml
 
 # For lint rules and documentation, see http://dart-lang.github.io/linter/lints.
