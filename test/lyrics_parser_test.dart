@@ -20,6 +20,11 @@ void main() {
     'lrc after junk lines': 'Lyrics from somewhere\n\n[00:01.00]first\n[00:02.50]second',
     'lrc with a qrc looking word': '[00:01.00]line [1,2]\n[00:02.00]next',
     'qrc after tags': '[ti:x]\n[ar:y]\n[1000,1000]a(1000,500)b(1500,500)',
+    'wlrc after offset': '[offset:500]\n[00:01.000]-[00:01.500]a\n[00:01.600]-[00:02.000]b',
+    'wlrc after junk lines': 'Lyrics from somewhere\n[00:01.000]-[00:01.500]a\n[00:01.600]-[00:02.000]b',
+    'lrc with a wlrc looking word': '[00:01.00]line [00:01.500]-[00:02.000]\n[00:02.00]next',
+    'plain text with a digit bracket': 'Chorus [2x]\nla la la',
+    'lrc after junk lines with a timing like word': 'the beginning\n[00:01.00]first\n[00:02.50]second',
     'qrc xml': '<?xml version="1.0"?>\n<Lyric_1 LyricContent="[ti:x]\n[1000,1000]a(1000,1000)\n"/>',
     'json without endtime': '[{"text": [{"text": "a", "timestamp": 1}]}]',
     'json object': '{"type": "Syllable", "content": [{"timestamp": 1000, "text": [{"text": "a", "part": false, "timestamp": 1000, "endtime": 2000}]}]}',
@@ -56,14 +61,20 @@ void main() {
   test('plain text is rejected and odd files still parse', () {
     expect(LyricsParser.parse(edgeCases['plain text']!), null);
     expect(LyricsParser.parse(edgeCases['plain text with sections']!), null);
+    expect(LyricsParser.parse(edgeCases['plain text with a digit bracket']!), null);
     expect(LyricsParser.parse(edgeCases['lrc after junk lines']!)!.lyrics.map((e) => e.readableText), ['first', 'second']);
+    expect(LyricsParser.parse(edgeCases['lrc after junk lines with a timing like word']!)!.lyrics.map((e) => e.readableText), ['first', 'second']);
     expect(LyricsParser.parse(edgeCases['qrc after tags']!)!.lyrics.single.readableText, 'ab');
+    expect(LyricsParser.parse(edgeCases['wlrc after offset']!)!.lyrics.single.readableText, 'a b');
+    expect(LyricsParser.parse(edgeCases['wlrc after junk lines']!)!.lyrics.single.readableText, 'a b');
     expect(LyricsParser.parse(edgeCases['srt after junk line']!)!.lyrics.single.readableText, 'hello');
     expect(LyricsParser.parse(edgeCases['ttml p without end']!)!.lyrics.single.readableText, 'hello');
   });
 }
 
 Lrc? _parseByTryingAll(String content) {
+  final wlrc = WlrcParser.parse(content);
+  if (wlrc != null) return wlrc;
   try {
     final lrc = LrcParser.parse(content);
     if (lrc.lyrics.isNotEmpty) return lrc;
@@ -82,5 +93,10 @@ Lrc? _parseByTryingAll(String content) {
 }
 
 bool _isValidByCheckingAll(String content) {
-  return LrcParser.isValid(content) || TtmlParser.isValid(content) || SubtitleParser.isValid(content) || PaxsenixJsonParser.isValid(content) || QrcParser.isValid(content);
+  return WlrcParser.isValid(content) ||
+      LrcParser.isValid(content) ||
+      TtmlParser.isValid(content) ||
+      SubtitleParser.isValid(content) ||
+      PaxsenixJsonParser.isValid(content) ||
+      QrcParser.isValid(content);
 }

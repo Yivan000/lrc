@@ -23,3 +23,4 @@ part 'src/parsers/paxsenix_json_parser.dart';
 part 'src/parsers/qrc_parser.dart';
 part 'src/parsers/subtitle_parser.dart';
 part 'src/parsers/ttml_parser.dart';
+part 'src/parsers/wlrc_parser.dart';

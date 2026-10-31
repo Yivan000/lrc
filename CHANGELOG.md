@@ -1,3 +1,8 @@
+## 2.5.0
+
+- `WlrcParser` reads word synced `.wlrc` lyrics (deezer and musixmatch exports), `LyricsParser` no longer reads their words as separate lines
+- `LyricsParser` guesses the format of content starting with text lines from its first timing, so their parser runs directly
+
 ## 2.4.0
 
 - `TtmlParser` is a single pass scanner now, ~2-5x faster and ~30x for lrc text inside `<p>`, the `xml` dependency is gone
