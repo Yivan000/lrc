@@ -34,6 +34,14 @@ class LyricsParser {
     return null;
   }
 
+  /// [content] with its `[tag:]` line set to [value] (removed when null), the rest stays as written.
+  /// Null when [content] is not lrc, other formats have no tag lines.
+  static String? setLrcTag(String content, String tag, String? value) {
+    final (format: guess, hasTimings: _) = _guessFormat(content);
+    if (guess != _LyricsFormat.lrc) return null;
+    return LrcParser._setTagLine(content, tag, value);
+  }
+
   /// Content starting with text is guessed from its first timing, found by the same pass that rejects plain text.
   static _FormatGuess _guessFormat(String content) {
     final start = LrcParser._contentStart(content);

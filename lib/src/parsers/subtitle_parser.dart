@@ -350,8 +350,10 @@ class SubtitleParser {
     return Lrc(
       type: type,
       lyrics: lines,
-      title: title,
-      author: author,
+      tags: {
+        if (title != null) 'ti': title,
+        if (author != null) 'au': author,
+      },
       personCount: personCount,
     );
   }

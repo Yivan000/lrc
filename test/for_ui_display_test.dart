@@ -126,8 +126,13 @@ void main() {
 
   test('every fixture keeps the index map and the lines in time order', () {
     for (final (:name, :lrc) in parseAllFixtures()) {
-      final shifted = Lrc(type: lrc.type, lyrics: lrc.lyrics, offset: 500, personCount: lrc.personCount);
-      final ui = shifted.forUiDisplay(0.8, extraOffsetDuration: const Duration(milliseconds: 700), romanizer: (index, text) => text.toUpperCase());
+      final shifted = lrc.withTags({...lrc.tags, Lrc.kOffsetTag: '500'});
+      final ui = shifted.forUiDisplay(
+        0.8,
+        extraOffsetDuration: const Duration(milliseconds: 700),
+        romanizer: (index, text) => text.toUpperCase(),
+        withUntimedLines: true,
+      );
       final lines = ui.uiLyricsLines;
       final map = ui.highlightTimestampsMap;
 
@@ -145,7 +150,10 @@ void main() {
           expect(lines[index].timestamp, timestamp, reason: '$name index $index');
         }
       }
-      expect(seenCounts.every((count) => count == 1), true, reason: '$name lines missing or repeated in the map');
+      for (var i = 0; i < lines.length; i++) {
+        final expectedCount = lines[i].isUntimed ? 0 : 1;
+        expect(seenCounts[i], expectedCount, reason: '$name line $i missing or repeated in the map');
+      }
 
       final resolver = ui.lineResolver;
       final expectedLineIndices = [

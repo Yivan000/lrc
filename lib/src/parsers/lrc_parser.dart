@@ -200,12 +200,15 @@ class LrcParser {
     }
 
     // split string into lines, code from Linesplitter().convert(data)
-    var lines = _splitLines(content);
+    final contentWithoutBOM = content.startsWith('﻿') ? content.substring(1) : content;
+    var lines = _splitLines(contentWithoutBOM);
 
     // temporary storer variables
-    String? artist, album, title, length, author, creator, offset, program, version, language;
+    final tags = <String, String>{};
     LrcTypes? type;
     var lyrics = <LrcLine>[];
+    List<LrcUntimedLine>? untimedLines;
+    List<String>? pendingUntimedTexts;
 
     final personToIndex = <String, int>{};
     var latestTimestamp = Duration.zero;
@@ -214,137 +217,128 @@ class LrcParser {
     // loop thru each lines
     for (var lineIndex = 0; lineIndex < lines.length; lineIndex++) {
       var l = lines[lineIndex];
-      final tagColonIndex = _tagColonIndex(l);
+      final trimmedLine = l.trim();
+      final tagColonIndex = _tagColonIndex(trimmedLine);
       if (tagColonIndex > 0) {
-        final tag = l.substring(1, tagColonIndex);
-        switch (tag) {
-          case 'ar':
-            artist ??= _tagValue(l, tagColonIndex);
-          case 'al':
-            album ??= _tagValue(l, tagColonIndex);
-          case 'ti':
-            title ??= _tagValue(l, tagColonIndex);
-          case 'au':
-            author ??= _tagValue(l, tagColonIndex);
-          case 'length':
-            length ??= _tagValue(l, tagColonIndex);
-          case 'by':
-            creator ??= _tagValue(l, tagColonIndex);
-          case 'offset':
-            offset ??= _tagValue(l, tagColonIndex);
-          case 're':
-            program ??= _tagValue(l, tagColonIndex);
-          case 've':
-            version ??= _tagValue(l, tagColonIndex);
-          case 'la':
-            language ??= _tagValue(l, tagColonIndex);
-        }
+        final tag = trimmedLine.substring(1, tagColonIndex);
+        if (tag != _kBackgroundTag && !tags.containsKey(tag)) tags[tag] = _tagValue(trimmedLine, tagColonIndex);
       }
 
       final lrclineDetails = _LRCMultiTimestampParser.parseLine(l);
-      if (lrclineDetails != null) {
-        var lineType = LrcTypes.simple;
-        List<LrcLinePart>? parts;
+      if (lrclineDetails == null) {
+        final isUntimedText = tagColonIndex < 0 && !trimmedLine.startsWith(_kBackgroundTagStart);
+        if (isUntimedText) (pendingUntimedTexts ??= []).add(trimmedLine);
+        continue;
+      }
+      if (pendingUntimedTexts != null) {
+        final beforeIndex = lyrics.length;
+        final untimed = untimedLines ??= [];
+        for (final text in pendingUntimedTexts) {
+          untimed.add(LrcUntimedLine(text: text, beforeIndex: beforeIndex));
+        }
+        pendingUntimedTexts = null;
+      }
+      var lineType = LrcTypes.simple;
+      List<LrcLinePart>? parts;
 
-        var lyric = lrclineDetails.lineText;
-        final timestamps = lrclineDetails.timestamps;
+      var lyric = lrclineDetails.lineText;
+      final timestamps = lrclineDetails.timestamps;
 
-        int? person;
+      int? person;
 
-        // checkers for different types of LRCs
-        if (_hasWordTimestamp(lyric)) {
-          // if enhanced
-          type = (type == LrcTypes.extended) ? LrcTypes.extended_enhanced : LrcTypes.enhanced;
-          parts = [];
-          lineType = LrcTypes.enhanced;
+      // checkers for different types of LRCs
+      if (_hasWordTimestamp(lyric)) {
+        // if enhanced
+        type = (type == LrcTypes.extended) ? LrcTypes.extended_enhanced : LrcTypes.enhanced;
+        parts = [];
+        lineType = LrcTypes.enhanced;
 
-          final indexOfLT = lyric.indexOf('<');
-          final personText = indexOfLT < 0 ? '' : lyric.substring(0, indexOfLT);
-          if (personText.contains(':')) {
-            person = personToIndex[personText];
-            if (person == null) {
-              try {
-                final numberString = RegExp(r'v(\d+):').firstMatch(personText)?[1];
-                if (numberString != null) {
-                  person = int.tryParse(numberString);
-                }
-              } catch (_) {}
-            }
-            person ??= personToIndex.length + 1;
-            personToIndex[personText] = person;
-            lyric = lyric.substring(indexOfLT); // ensure
+        final indexOfLT = lyric.indexOf('<');
+        final personText = indexOfLT < 0 ? '' : lyric.substring(0, indexOfLT);
+        if (personText.contains(':')) {
+          person = personToIndex[personText];
+          if (person == null) {
+            try {
+              final numberString = RegExp(r'v(\d+):').firstMatch(personText)?[1];
+              if (numberString != null) {
+                person = int.tryParse(numberString);
+              }
+            } catch (_) {}
           }
-
-          parts.addAll(
-            _extractParts(lyric, timestamps.first, lines, lineIndex + 1),
-          );
-        } else if (_isExtendedLine(lyric)) {
-          //if extended
-          type = (type == LrcTypes.enhanced) ? LrcTypes.extended_enhanced : LrcTypes.extended;
-
-          final personText = lyric[0];
-          person = personToIndex[personText] ??= personToIndex.length + 1;
-
-          parts = [];
-          parts.add(LrcLinePart(
-            startTimestamp: timestamps.first,
-            endTimestamp: timestamps.first,
-            lyrics: lyric.substring(2),
-          ));
-
-          lineType = LrcTypes.extended;
-        } else {
-          // -- plain line, strip `v1: ` etc prefix
-          final prefix = _personPrefix(lyric);
-          if (prefix != null) {
-            final (vIndex, colonEnd) = prefix;
-            final personText = lyric.substring(vIndex, colonEnd);
-            person = personToIndex[personText];
-            if (person == null) {
-              person = int.tryParse(lyric.substring(vIndex + 1, colonEnd - 1));
-              person ??= personToIndex.length + 1;
-              personToIndex[personText] = person;
-            }
-            var prefixEnd = colonEnd;
-            while (prefixEnd < lyric.length && lyric.codeUnitAt(prefixEnd) == 32) {
-              prefixEnd++;
-            }
-            lyric = lyric.substring(prefixEnd);
-          }
+          person ??= personToIndex.length + 1;
+          personToIndex[personText] = person;
+          lyric = lyric.substring(indexOfLT); // ensure
         }
 
-        final lyricSplit = parts != null && parts.length > 1 ? List.filled(1, lyric, growable: false) : splitMultiLanguageLine(lyric);
-        for (var lyric in lyricSplit) {
-          final readableTextPre = parts != null && parts.isNotEmpty ? parts.map((e) => e.lyrics).join() : lyric;
-          for (final linetimestamp in timestamps) {
-            if (linetimestamp < latestTimestamp) shouldSortLyrics = true;
-            latestTimestamp = linetimestamp;
-            final readableText = readableTextPre.isNotEmpty ? readableTextPre : lyric;
-            final partsShift = linetimestamp - timestamps.first;
-            final lineParts = parts == null ? null : _shiftParts(parts, partsShift);
-            lyrics.add(LrcLine(
-              timestamp: linetimestamp,
-              originalIndex: lyrics.length,
-              lyrics: lyric,
-              readableText: readableText,
-              type: lineType,
-              parts: lineParts,
-              person: person,
-              isRTL: LrcParser.isLrcLineRTL(readableText),
-            ));
+        parts.addAll(
+          _extractParts(lyric, timestamps.first, lines, lineIndex + 1),
+        );
+      } else if (_isExtendedLine(lyric)) {
+        //if extended
+        type = (type == LrcTypes.enhanced) ? LrcTypes.extended_enhanced : LrcTypes.extended;
+
+        final personText = lyric[0];
+        person = personToIndex[personText] ??= personToIndex.length + 1;
+
+        parts = [];
+        parts.add(LrcLinePart(
+          startTimestamp: timestamps.first,
+          endTimestamp: timestamps.first,
+          lyrics: lyric.substring(2),
+        ));
+
+        lineType = LrcTypes.extended;
+      } else {
+        // -- plain line, strip `v1: ` etc prefix
+        final prefix = _personPrefix(lyric);
+        if (prefix != null) {
+          final (vIndex, colonEnd) = prefix;
+          final personText = lyric.substring(vIndex, colonEnd);
+          person = personToIndex[personText];
+          if (person == null) {
+            person = int.tryParse(lyric.substring(vIndex + 1, colonEnd - 1));
+            person ??= personToIndex.length + 1;
+            personToIndex[personText] = person;
           }
+          var prefixEnd = colonEnd;
+          while (prefixEnd < lyric.length && lyric.codeUnitAt(prefixEnd) == 32) {
+            prefixEnd++;
+          }
+          lyric = lyric.substring(prefixEnd);
+        }
+      }
+
+      final lyricSplit = parts != null && parts.length > 1 ? List.filled(1, lyric, growable: false) : splitMultiLanguageLine(lyric);
+      for (var lyric in lyricSplit) {
+        final readableTextPre = parts != null && parts.isNotEmpty ? parts.map((e) => e.lyrics).join() : lyric;
+        for (final linetimestamp in timestamps) {
+          if (linetimestamp < latestTimestamp) shouldSortLyrics = true;
+          latestTimestamp = linetimestamp;
+          final readableText = readableTextPre.isNotEmpty ? readableTextPre : lyric;
+          final partsShift = linetimestamp - timestamps.first;
+          final lineParts = parts == null ? null : _shiftParts(parts, partsShift);
+          lyrics.add(LrcLine(
+            timestamp: linetimestamp,
+            originalIndex: lyrics.length,
+            lyrics: lyric,
+            readableText: readableText,
+            type: lineType,
+            parts: lineParts,
+            person: person,
+            isRTL: LrcParser.isLrcLineRTL(readableText),
+          ));
         }
       }
     }
 
     if (type == LrcTypes.enhanced || type == LrcTypes.extended_enhanced) {
       // extract bg tags
-      var bgIndex = content.indexOf('[bg:');
+      var bgIndex = content.indexOf(_kBackgroundTagStart);
       while (bgIndex >= 0) {
         final textStart = bgIndex + 4;
         final textEnd = _lastIndexOnLine(content, 0x5D /* ] */, textStart);
         final nextSearchStart = textEnd < 0 ? bgIndex + 1 : textEnd + 1;
-        bgIndex = content.indexOf('[bg:', nextSearchStart);
+        bgIndex = content.indexOf(_kBackgroundTagStart, nextSearchStart);
         if (textEnd < 0) continue;
         final text = content.substring(textStart, textEnd);
         final parts = extractTimeStampPartFromLine(text).toList();
@@ -371,19 +365,18 @@ class LrcParser {
     var personCount = personToIndex.values.where((element) => element > 0).length;
     if (personCount <= 0) personCount = 1;
 
+    if (pendingUntimedTexts != null) {
+      final untimed = untimedLines ??= [];
+      for (final text in pendingUntimedTexts) {
+        untimed.add(LrcUntimedLine(text: text, beforeIndex: null));
+      }
+    }
+
     return Lrc(
       type: type ?? LrcTypes.simple,
-      artist: artist,
-      album: album,
-      title: title,
-      author: author,
-      length: length,
-      creator: creator,
-      offset: (offset != null) ? int.tryParse(offset) : null,
-      program: program,
-      version: version,
+      tags: tags,
       lyrics: lyrics,
-      language: language,
+      untimedLines: untimedLines ?? const [],
       personCount: personCount,
     );
   }
@@ -425,16 +418,63 @@ class LrcParser {
     return null;
   }
 
+  static const _kBackgroundTag = 'bg';
+  static const _kBackgroundTagStart = '[$_kBackgroundTag:';
+
+  /// a tag key is lowercase `a-z`, digits, `_` or `-`, so `[Verse 1: Name]` stays a text line.
   static int _tagColonIndex(String l) {
     final length = l.length;
     if (length < 5) return -1;
     if (l.codeUnitAt(0) != 0x5B /* [ */ || l.codeUnitAt(length - 1) != 0x5D /* ] */) return -1;
     final c = l.codeUnitAt(1);
     if (c < 0x61 || c > 0x7A) return -1; // a-z
-    return l.indexOf(':', 2);
+    for (var i = 2; i < length - 1; i++) {
+      final k = l.codeUnitAt(i);
+      if (k == 0x3A /* : */) return i;
+      final isKeyCodeUnit = (k >= 0x61 && k <= 0x7A) || (k >= 0x30 && k <= 0x39) || k == 0x5F /* _ */ || k == 0x2D /* - */;
+      if (!isKeyCodeUnit) return -1;
+    }
+    return -1;
   }
 
   static String _tagValue(String l, int tagColonIndex) => l.substring(tagColonIndex + 1, l.length - 1).trim();
+
+  /// replaces the first `[tag:]` line, or adds one at the top. lines end like in [_splitLines].
+  static String _setTagLine(String content, String tag, String? value) {
+    final length = content.length;
+    final contentStart = content.startsWith('﻿') ? 1 : 0;
+    var lineStart = contentStart;
+    while (lineStart < length) {
+      var lineEnd = lineStart;
+      while (lineEnd < length && !_isLineBreak(content.codeUnitAt(lineEnd))) {
+        lineEnd++;
+      }
+      var nextLineStart = lineEnd;
+      if (nextLineStart < length && content.codeUnitAt(nextLineStart) == 0x0D) nextLineStart++;
+      if (nextLineStart < length && content.codeUnitAt(nextLineStart) == 0x0A) nextLineStart++;
+
+      var textStart = lineStart;
+      while (textStart < lineEnd && _isEmptyCodeUnit(content.codeUnitAt(textStart))) {
+        textStart++;
+      }
+      final mayBeTag = textStart < lineEnd && content.codeUnitAt(textStart) == 0x5B /* [ */;
+      if (mayBeTag) {
+        final line = content.substring(textStart, lineEnd).trimRight();
+        final tagColonIndex = _tagColonIndex(line);
+        final isTheTag = tagColonIndex > 0 && tagColonIndex - 1 == tag.length && line.startsWith(tag, 1);
+        if (isTheTag) {
+          if (value == null) return content.replaceRange(lineStart, nextLineStart, '');
+          return content.replaceRange(lineStart, lineEnd, '[$tag:$value]');
+        }
+      }
+      lineStart = nextLineStart;
+    }
+    if (value == null) return content;
+    final lineBreak = content.contains('\r\n') ? '\r\n' : '\n';
+    return content.replaceRange(contentStart, contentStart, '[$tag:$value]$lineBreak');
+  }
+
+  static bool _isLineBreak(int c) => c == 0x0A || c == 0x0D;
 
   static bool _hasWordTimestamp(String lyric) {
     var open = lyric.indexOf('<');

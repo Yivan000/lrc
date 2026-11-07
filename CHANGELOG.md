@@ -1,3 +1,12 @@
+## 2.6.0
+
+- `Lrc.untimedLines` keeps the lines without a timestamp (section headers, notes, empty lines between verses) with the line they are above, `format()` writes them back where they were
+- `forUiDisplay(withUntimedLines: true)` shows them as rows, without the ones of a translation written as its own block, and empty lines only when fewer than half the lines have one
+- TTML `<div>`s (verses) get an empty untimed line between them
+- `Lrc.tags` holds every ID tag in written order, unknown tags included, the old fields are getters on it (breaking: the constructor takes `tags`)
+- `LyricsParser.setLrcTag` changes one tag line of lrc text and keeps the rest as written
+- a byte order mark no longer hides the first tag, and `[Verse 1: Name]` style lines are no longer read as tags
+
 ## 2.5.0
 
 - `WlrcParser` reads word synced `.wlrc` lyrics (deezer and musixmatch exports), `LyricsParser` no longer reads their words as separate lines

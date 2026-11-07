@@ -16,7 +16,7 @@ class QrcParser {
     final lyricContent = _extractLyricContent(content);
     final lines = LrcParser._splitLines(lyricContent);
 
-    String? artist, album, title, creator, offset;
+    final tags = <String, String>{};
     var type = LrcTypes.simple;
     final lyrics = <LrcLine>[];
     var latestTimestamp = Duration.zero;
@@ -26,18 +26,7 @@ class QrcParser {
       final tagColonIndex = LrcParser._tagColonIndex(l);
       if (tagColonIndex > 0) {
         final tag = l.substring(1, tagColonIndex);
-        switch (tag) {
-          case 'ar':
-            artist ??= LrcParser._tagValue(l, tagColonIndex);
-          case 'al':
-            album ??= LrcParser._tagValue(l, tagColonIndex);
-          case 'ti':
-            title ??= LrcParser._tagValue(l, tagColonIndex);
-          case 'by':
-            creator ??= LrcParser._tagValue(l, tagColonIndex);
-          case 'offset':
-            offset ??= LrcParser._tagValue(l, tagColonIndex);
-        }
+        if (!tags.containsKey(tag)) tags[tag] = LrcParser._tagValue(l, tagColonIndex);
         continue;
       }
 
@@ -54,14 +43,9 @@ class QrcParser {
 
     if (shouldSortLyrics) lyrics.sort(LrcParser._compareLines);
 
-    final offsetMS = offset == null ? null : int.tryParse(offset);
     return Lrc(
       type: type,
-      artist: artist,
-      album: album,
-      title: title,
-      creator: creator,
-      offset: offsetMS,
+      tags: tags,
       lyrics: lyrics,
     );
   }

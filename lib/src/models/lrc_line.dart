@@ -21,6 +21,9 @@ class LrcLine {
 
   final bool isRTL;
 
+  /// a row for an [LrcUntimedLine], only in `forUiDisplay` with `withUntimedLines`.
+  final bool isUntimed;
+
   bool get isBGLyrics => person == 0;
 
   const LrcLine({
@@ -32,6 +35,7 @@ class LrcLine {
     required this.parts,
     required this.person,
     required this.isRTL,
+    this.isUntimed = false,
   });
 
   LrcLine withTimeStamp({
@@ -47,6 +51,7 @@ class LrcLine {
       person: person,
       parts: parts ?? this.parts,
       isRTL: isRTL,
+      isUntimed: isUntimed,
     );
   }
 

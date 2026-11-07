@@ -45,6 +45,7 @@ class TtmlParser {
   final _songwriters = <String>[];
   final _agentPersons = <String, int>{};
   final _divPersons = <int?>[];
+  var _divsCount = 0;
   final _lines = <_TtmlLine>[];
   final _extrasByKey = <String, List<_TtmlLine>>{};
 
@@ -243,18 +244,20 @@ class TtmlParser {
           person: person,
           key: _tagKey,
           isBackground: _tagRole == _TtmlRole.background,
+          divNumber: _divsCount,
         );
         _openLine(ttmlLine, element, isSelfClosing);
       case _TtmlElement.text:
         final key = _tagKey;
         if (key == null) return;
-        final ttmlLine = _TtmlLine(beginMS: -1, endMS: -1, person: null, key: key, isBackground: false);
+        final ttmlLine = _TtmlLine(beginMS: -1, endMS: -1, person: null, key: key, isBackground: false, divNumber: _divsCount);
         _openLine(ttmlLine, element, isSelfClosing);
       case _TtmlElement.div:
         if (isSelfClosing) return;
         final agent = _tagAgent;
         final person = agent == null ? _divPersons.lastOrNull : _personOf(agent);
         _divPersons.add(person);
+        _divsCount++;
       case _TtmlElement.body:
         if (_tagDurMS >= 0) _lengthMS = _tagDurMS;
       case _TtmlElement.agent:
@@ -442,9 +445,18 @@ class TtmlParser {
   var _latestTimestamp = Duration.zero;
   var _shouldSortLyrics = false;
 
+  /// a `<div>` is a verse, its first line gets an empty untimed line above it.
   Lrc _buildLrc() {
+    List<LrcUntimedLine>? untimedLines;
+    var previousDivNumber = -1;
     for (final line in _lines) {
+      final firstLineIndex = _lyrics.length;
       _addLinesOf(line);
+      if (_lyrics.length == firstLineIndex) continue;
+      final divNumber = line.divNumber;
+      final isNewDiv = previousDivNumber >= 0 && divNumber != previousDivNumber;
+      previousDivNumber = divNumber;
+      if (isNewDiv) (untimedLines ??= []).add(LrcUntimedLine(text: '', beforeIndex: firstLineIndex));
     }
     if (_shouldSortLyrics) _lyrics.sort(LrcParser._compareLines);
 
@@ -452,16 +464,23 @@ class TtmlParser {
     final author = _songwriters.isEmpty ? null : _songwriters.join(', ');
     final length = _lengthMS < 0 ? null : LrcLine.formatTimestamp(Duration(milliseconds: _lengthMS));
     final personCount = _persons.isEmpty ? 1 : _persons.length;
+    final title = _title;
+    final album = _album;
+    final creator = _creator;
+    final language = _language;
     return Lrc(
       type: _type,
       lyrics: _lyrics,
-      title: _title,
-      artist: artist,
-      album: _album,
-      author: author,
-      creator: _creator,
-      language: _language,
-      length: length,
+      tags: {
+        if (artist != null) 'ar': artist,
+        if (album != null) 'al': album,
+        if (title != null) 'ti': title,
+        if (author != null) 'au': author,
+        if (creator != null) 'by': creator,
+        if (length != null) Lrc.kLengthTag: length,
+        if (language != null) 'la': language,
+      },
+      untimedLines: untimedLines ?? const [],
       personCount: personCount,
     );
   }
@@ -820,6 +839,7 @@ class _TtmlLine {
   final int? person;
   final String? key;
   final bool isBackground;
+  final int divNumber;
   final main = _TtmlTrack();
   _TtmlTrack? background;
 
@@ -829,6 +849,7 @@ class _TtmlLine {
     required this.person,
     required this.key,
     required this.isBackground,
+    required this.divNumber,
   });
 }
 
